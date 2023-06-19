@@ -90,6 +90,8 @@
 }
 % Solves issues Warning: File `cv.out' has changed
 \RequirePackage{bookmark}
+% For signature on cover letter
+\RequirePackage{graphicx}
 
 %-------------------------------------------------------------------------------
 %                Configuration for directory locations
@@ -771,12 +773,15 @@
 % Usage: \makeletterclosing
 \newcommand*{\makeletterclosing}{%
   \vspace{6mm}
-  \lettertextstyle{\@letterclosing} \\\\\\
+  \lettertextstyle{\@letterclosing}
+  \begin{flushleft}
+    \includegraphics[scale=0.0625]{signature.png}
+  \end{flushleft}
   \letternamestyle{\@firstname\ \@lastname}
-  \ifthenelse{\isundefined{\@letterenclosure}}
-    {\\}
-    {%
-      \\\\\\
-      \letterenclosurestyle{\@letterenclname: \@letterenclosure} \\
-    }
+  % \ifthenelse{\isundefined{\@letterenclosure}}
+  %   {\\}
+  %   {%
+  %     \\\\\\
+  %     \letterenclosurestyle{\@letterenclname: \@letterenclosure} \\
+  %   }
 }
