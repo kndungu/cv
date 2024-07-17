@@ -664,7 +664,7 @@
 % Define a subentry of cv information
 % Usage: \cvsubentry{<position>}{<date>}{<description>}
 \newcommand*{\cvsubentry}[3]{%
-  \vspace{2mm}
+  \vspace{1mm}
   \setlength\tabcolsep{0pt}
   \setlength{\extrarowheight}{0pt}
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
