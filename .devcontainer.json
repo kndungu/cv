@@ -1,4 +1,4 @@
 {
-  "postCreateCommand": "git config --global push.default current && sudo apt update && sudo apt install texlive-full -y && sudo apt install luatex -y && sudo apt install entr",
-  "postStartCommand": "ls /workspaces/cv/cv.pdf | entr -r gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -dNOPAUSE -dQUIET -dBATCH -sOutputFile=Kinuthia_CV.pdf cv.pdf & ls /workspaces/cv/coverletter.pdf | entr -r gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -dNOPAUSE -dQUIET -dBATCH -sOutputFile=Kinuthia_CoverLetter.pdf coverletter.pdf & wait"
+  "postCreateCommand": ".devcontainer/install-packages.sh && git config --global push.default current",
+  "postStartCommand": ".devcontainer/watch-and-compress.sh"
 }
