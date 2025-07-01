@@ -1,4 +1,4 @@
 {
   "postCreateCommand": ".devcontainer/install-packages.sh && git config --global push.default current",
-  "postStartCommand": ".devcontainer/watch-and-compress.sh"
+  "postStartCommand": ".devcontainer/watch-and-compress.sh &"
 }
