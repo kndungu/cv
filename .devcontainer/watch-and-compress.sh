@@ -1,10 +1,14 @@
 #!/bin/bash
 set -e
 
-# Watch cv.pdf and compress on change
-ls /workspaces/cv/cv.pdf | entr -r gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -dNOPAUSE -dQUIET -dBATCH -sOutputFile=Kinuthia_CV.pdf cv.pdf &
+# Define an array of input and output filenames
+files=( "cv.pdf Kinuthia_CV.pdf" "coverletter.pdf Kinuthia_CoverLetter.pdf" )
 
-# Watch coverletter.pdf and compress on change
-ls /workspaces/cv/coverletter.pdf | entr -r gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -dNOPAUSE -dQUIET -dBATCH -sOutputFile=Kinuthia_CoverLetter.pdf coverletter.pdf &
+# Loop over the files and watch each for changes
+for file in "${files[@]}"; do
+    input=$(echo "$file" | cut -d' ' -f1)
+    output=$(echo "$file" | cut -d' ' -f2)
+    ls "/workspaces/cv/$input" | entr -r gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$output" "$input" &
+done
 
 wait
