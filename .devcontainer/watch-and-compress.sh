@@ -8,7 +8,7 @@ files=( "cv.pdf Kinuthia_CV.pdf" "coverletter.pdf Kinuthia_CoverLetter.pdf" )
 for file in "${files[@]}"; do
     input=$(echo "$file" | cut -d' ' -f1)
     output=$(echo "$file" | cut -d' ' -f2)
-    ls "/workspaces/cv/$input" | entr -r gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$output" "$input" &
+    echo "/workspaces/cv/$input" | entr -r gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$output" "$input" &
 done
 
 wait
