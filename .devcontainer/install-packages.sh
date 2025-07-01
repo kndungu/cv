@@ -5,6 +5,4 @@ set -e
 sudo apt update
 
 # Install required packages
-sudo apt install -y texlive-full
-sudo apt install -y luatex
-sudo apt install -y entr
+sudo apt install -y texlive-full luatex entr
